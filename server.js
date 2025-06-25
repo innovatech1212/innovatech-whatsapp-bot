@@ -14,8 +14,11 @@ const authToken = process.env.TWILIO_AUTH;
 const fromWhatsAppNumber = 'whatsapp:+14155238886';
 const openaiKey = process.env.OPENAI_API_KEY;
 
-const configuration = new Configuration({ apiKey: openaiKey });
-const openai = new OpenAIApi(configuration);
+const OpenAI = require("openai");
+
+const openai = new OpenAI({
+  apiKey: openaiKey,
+});
 
 app.post('/webhook', async (req, res) => {
   const incomingMsg = req.body.Body;
